@@ -1,14 +1,11 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, ListItemButton, ListItemIcon } from '@mui/material'
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
-import HomeIcon from '@mui/icons-material/Home';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
-import GrainIcon from '@mui/icons-material/Grain';
-
-import Switch from '@mui/material/Switch';
-import Stack from '@mui/material/Stack';
+import ViewListRoundedIcon from '@mui/icons-material/ViewListRounded';
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -18,14 +15,12 @@ import Menu from '@mui/material/Menu';
 
 
 const options = [
-  'Filter',
   'Workshop 2.5',
   'In-house',
   'Archived'
 ];
 
 const options1 = [
-  'Views',
   'List',
   'Card'
 ];
@@ -76,43 +71,27 @@ const DWorkshopPage = () => {
             underline="hover"
             sx={{ display: 'flex', alignItems: 'center' }}
             color="inherit"
-            href="/"
-          >
-            <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-            Home
-          </Link>
-          <Link
-            underline="hover"
-            sx={{ display: 'flex', alignItems: 'center' }}
-            color="inherit"
             href="/material-ui/getting-started/installation/"
           >
             <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
             Workshops
           </Link>
-          <Typography
-            sx={{ display: 'flex', alignItems: 'center' }}
-            color="text.primary"
-          >
-            <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-            2.5
-          </Typography>
         </Breadcrumbs> 
       </div>
 
       <Box height= '40px' display='flex' alignItems='center' paddingRight='10px'>
         {/* View */}
         <List component="nav" aria-label="Device settings">
-          <ListItem
-            button
+          <ListItemButton
             aria-haspopup="listbox"
             aria-controls="lock-menu"
             aria-label="Views"
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClickListItem1}
           >
-            <ListItemText secondary={options1[selectedIndex1]} />
-          </ListItem>
+            <ListItemIcon> <ViewListRoundedIcon /> </ListItemIcon>
+            <ListItemText secondary="View"/>
+          </ListItemButton>
         </List>
         <Menu
           id="lock-menu"
@@ -127,7 +106,6 @@ const DWorkshopPage = () => {
           {options1.map((option, index) => (
             <MenuItem
               key={option}
-              disabled={index === 0}
               selected={index === selectedIndex1}
               onClick={(event) => handleMenuItemClick1(event, index)}
             >
@@ -140,16 +118,16 @@ const DWorkshopPage = () => {
 
         {/* Filter */}
         <List component="nav" aria-label="Device settings">
-          <ListItem
-            button
+          <ListItemButton
             aria-haspopup="listbox"
             aria-controls="lock-menu"
             aria-label="Filter"
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClickListItem}
           >
-            <ListItemText secondary={options[selectedIndex]} />
-          </ListItem>
+            <ListItemIcon> <FilterAltOutlinedIcon /> </ListItemIcon>
+            <ListItemText secondary="Filter" />
+          </ListItemButton>
         </List>
         <Menu
           id="lock-menu"
@@ -164,7 +142,6 @@ const DWorkshopPage = () => {
           {options.map((option, index) => (
             <MenuItem
               key={option}
-              disabled={index === 0}
               selected={index === selectedIndex}
               onClick={(event) => handleMenuItemClick(event, index)}
             >
