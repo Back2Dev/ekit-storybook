@@ -1,5 +1,5 @@
 import React from 'react'
-import DMian from './pages/d-main'
+import DMain from './pages/d-main';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -16,7 +16,7 @@ const theme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <DMian />
+      <DMain />
     </ThemeProvider>
   )
 }
