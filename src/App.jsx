@@ -1,24 +1,24 @@
-import React from 'react'
-import DMain from './pages/d-main';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import React from 'react';
+import MMain from './pages/m-main';
 
 const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#092b58', 
-      },
-      secondary: {
-        main: '#cb1c33', 
-      },
+  palette: {
+    primary: {
+      main: '#092b58',
     },
-  });
+    secondary: {
+      main: '#cb1c33',
+    },
+  },
+});
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <DMain />
+      <MMain />
     </ThemeProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;
