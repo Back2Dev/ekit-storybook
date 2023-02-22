@@ -10,7 +10,7 @@ const DMain = () => {
     <div className='d-main'>
       <DTopBar />
       <DWList />
-      <DWPage />
+      {/* <DWPage /> */}
     </div>
   )
 }
