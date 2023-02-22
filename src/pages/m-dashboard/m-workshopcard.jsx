@@ -30,9 +30,13 @@ const WorkshopCard = ({ workshop, date, participants, progress }) => {
           <Box display="flex" alignItems="center">
             <AccountCircleIcon
               style={{ height: '30px', width: '30px' }}
-              sx={{ p: 0.5 }}
+              sx={{ p: 0.5, color: 'primary.main' }}
             />
-            <Typography variant="body2" component="p">
+            <Typography
+              variant="body2"
+              component="p"
+              sx={{ color: 'primary.main' }}
+            >
               {participants}
             </Typography>
           </Box>
