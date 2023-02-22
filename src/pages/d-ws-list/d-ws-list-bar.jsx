@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box, ListItemButton, ListItemIcon } from '@mui/material'
-import Typography from '@mui/material/Typography';
+import { Box, ListItemButton, Typography } from '@mui/material'
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
@@ -8,13 +7,13 @@ import ViewListRoundedIcon from '@mui/icons-material/ViewListRounded';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 
 
 const options = [
+  'Select All',
   'Workshop 2.5',
   'In-house',
   'Archived'
@@ -30,7 +29,7 @@ function handleClick(event) {
   console.info('You clicked a breadcrumb.');
 }
 
-const DWorkshopPage = () => {
+const DWLBar = () => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
@@ -64,16 +63,16 @@ const DWorkshopPage = () => {
   };
 
   return (
-    <Box bgcolor='lightgray' display='flex' alignItems='center' justifyContent="space-between" height='40px' paddingLeft='10px' borderBottom='1px solid black' >
+    <Box bgcolor="#092b58" display='flex' alignItems='center' justifyContent="space-between" height='45px' paddingLeft='10px'>
       <div role="presentation" onClick={handleClick}>
         <Breadcrumbs aria-label="breadcrumb">
           <Link
             underline="hover"
             sx={{ display: 'flex', alignItems: 'center' }}
-            color="inherit"
+            color="secondary"
             href="/material-ui/getting-started/installation/"
           >
-            <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+            {/* <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" /> */}
             Workshops
           </Link>
         </Breadcrumbs> 
@@ -89,8 +88,7 @@ const DWorkshopPage = () => {
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClickListItem1}
           >
-            <ListItemIcon> <ViewListRoundedIcon /> </ListItemIcon>
-            <ListItemText secondary="View"/>
+            <ListItemText secondary={<Typography color="secondary" display="flex" alignItems='center' ><ViewListRoundedIcon />-View</Typography>}/>
           </ListItemButton>
         </List>
         <Menu
@@ -114,8 +112,6 @@ const DWorkshopPage = () => {
           ))}
         </Menu>
 
-
-
         {/* Filter */}
         <List component="nav" aria-label="Device settings">
           <ListItemButton
@@ -125,8 +121,7 @@ const DWorkshopPage = () => {
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClickListItem}
           >
-            <ListItemIcon> <FilterAltOutlinedIcon /> </ListItemIcon>
-            <ListItemText secondary="Filter" />
+            <ListItemText secondary={<Typography color="secondary" display="flex" alignItems='center' ><FilterAltOutlinedIcon />-Filter</Typography>}/>
           </ListItemButton>
         </List>
         <Menu
@@ -153,4 +148,4 @@ const DWorkshopPage = () => {
     </Box>
   )
 }
-export default DWorkshopPage
+export default DWLBar
