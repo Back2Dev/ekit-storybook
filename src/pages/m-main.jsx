@@ -9,7 +9,7 @@ const MMain = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      const isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
+      const isMobileDevice = window.innerWidth < 768;
       setIsMobile(isMobileDevice);
     };
 

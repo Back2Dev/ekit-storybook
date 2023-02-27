@@ -7,7 +7,7 @@ import {
   LinearProgress,
   Typography,
 } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const getProgressColor = (progress) => {
   if (progress < 50) {
@@ -33,8 +33,7 @@ const getCategoryColor = (category) => {
 };
 
 function WorkshopCard({ workshop, category, date, participants, progress }) {
-  const [friendlyDate, setFriendlyDate] = useState('');
-
+  //display upcoming date in days, weeks, months
   function getFriendlyDate(date) {
     const workshopDate = new Date(date);
     const currentDate = new Date();
@@ -57,13 +56,15 @@ function WorkshopCard({ workshop, category, date, participants, progress }) {
     return months === 1 ? 'Next month' : `In ${months} months`;
   }
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setFriendlyDate(getFriendlyDate(date));
-    }, 1000);
+  // display year if date has already passed and workshop is archived
+  function ArchiveYear(date) {
+    const workshopDate = new Date(date);
+    const currentDate = new Date();
+    const difference = workshopDate - currentDate;
 
-    return () => clearInterval(intervalId);
-  }, [date, getFriendlyDate]);
+    if (difference < 0) return `, ${new Date(date).getFullYear()}`;
+    return '';
+  }
 
   return (
     <Card style={{ maxWidth: 550, margin: '10px' }}>
@@ -91,7 +92,10 @@ function WorkshopCard({ workshop, category, date, participants, progress }) {
               month: 'short',
               day: 'numeric',
             })}
-            {friendlyDate && ` (${friendlyDate})`}
+
+            {ArchiveYear(date)}
+
+            {getFriendlyDate(date) && ` (${getFriendlyDate(date)})`}
           </Typography>
           <Box display="flex" alignItems="center">
             <AccountCircleIcon

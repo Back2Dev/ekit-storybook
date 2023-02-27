@@ -10,13 +10,20 @@ const earliestWorkshop = workshopdata
 const MUpcoming = () => {
   return (
     <div>
-      <Card style={{ margin: '10px', background: '#f2f3f6' }}>
+      <Card
+        style={{
+          maxWidth: 500,
+          margin: '10px',
+          background: '#f2f3f6',
+          paddingBottom: 10,
+        }}
+      >
         <Typography
           variant="h6"
           component="h5"
           align="center"
           sx={{
-            paddingY: 1,
+            paddingTop: 1,
             fontWeight: 'bold',
           }}
         >
