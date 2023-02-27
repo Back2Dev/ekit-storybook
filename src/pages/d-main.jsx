@@ -10,9 +10,9 @@ const DMain = () => {
   return (
     <div className='d-main'>
       <DTopBar />
-      {/* <DWList /> */}
+      <DWList />
       {/* <DWPage /> */}
-      <DPList />
+      {/* <DPList /> */}
     </div>
   )
 }

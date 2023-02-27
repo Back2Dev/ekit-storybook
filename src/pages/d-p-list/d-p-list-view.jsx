@@ -104,9 +104,9 @@ const DPLView = () =>{
     <Box sx={{ flexGrow: 1 }} height="100%">
       <Grid container >
         <Grid item xs={infoButton ? 9.5 : 12}>
-            {/* <Box sx={{width: 'auto', height: '30px', bgcolor:"gray", color: 'secondary.main', fontSize:'1.2rem', display: 'flex', alignItems: 'center', paddingLeft: '20px', borderRadius: '15px 15px 0 0', borderBottom:'1px solid black'}}>
+            <Box sx={{width: 'auto', height: '30px', bgcolor:"gray", color: 'secondary.main', fontSize:'1.2rem', display: 'flex', alignItems: 'center', paddingLeft: '20px', borderRadius: '15px 15px 0 0', borderBottom:'1px solid black'}}>
               {pData.name}
-            </Box> */}
+            </Box>
             <DataGrid
               rows={rows}
               columns={columns}

@@ -133,12 +133,12 @@ const participantData = [
 
 
 const listData = [
-	{ id: 1, Workshop: 'Newport Beach, CA', Date: '11-13 Jan 2023', Participants: '21', Progress: '100%', Type: 'Archived' },
-	{ id: 2, Workshop: 'Acme Inc', Date: '15-17 Feb 2023', Participants: '33', Progress: '80%', Type: 'In-house' },
-	{ id: 3, Workshop: 'Newport Beach, CA', Date: '23-24 Feb 2023', Participants: '30', Progress: '50%', Type: '2.5' },
-	{ id: 4, Workshop: 'Big Co.', Date: '25-27 Feb 2023', Participants: '40', Progress: '30%', Type: 'In-house' },
-	{ id: 5, Workshop: 'Newport Beach, CA', Date: '28-30 Mar 2023', Participants: '50', Progress: '10%', Type: '2.5' },
-	{ id: 6, Workshop: 'Small Corp', Date: '31-02 Apr 2023', Participants: '60', Progress: '0%', Type: 'In-house' },
+	{ id: 1, Workshop: 'Newport Beach, CA', Date: '11-13 Jan 2023', Participants: '21', Progress: 1, Type: 'Archived' },
+	{ id: 2, Workshop: 'Acme Inc', Date: '15-17 Feb 2023', Participants: '33', Progress: 0.8, Type: 'In-house' },
+	{ id: 3, Workshop: 'Newport Beach, CA', Date: '23-24 Feb 2023', Participants: '30', Progress: 0.5, Type: '2.5' },
+	{ id: 4, Workshop: 'Big Co.', Date: '25-27 Feb 2023', Participants: '40', Progress: 0.3, Type: 'In-house' },
+	{ id: 5, Workshop: 'Newport Beach, CA', Date: '28-30 Mar 2023', Participants: '50', Progress: 0.1, Type: '2.5' },
+	{ id: 6, Workshop: 'Small Corp', Date: '31-02 Apr 2023', Participants: '60', Progress: 0, Type: 'In-house' },
 ];
 
 const wsData = [
