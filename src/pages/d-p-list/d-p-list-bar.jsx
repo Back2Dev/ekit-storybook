@@ -6,6 +6,8 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 import DPListContext from './d-p-list-provider';
 
+import { participantData } from '../../moca_data'
+
 const DPLBar = () => {
 
   const { infoButton, setInfoButton } = React.useContext(DPListContext);
@@ -50,18 +52,26 @@ const DPLBar = () => {
             underline="hover"
             sx={{ display: 'flex', alignItems: 'center' }}
             color="secondary"
-            href="/material-ui/getting-started/installation/"
+            // href="/material-ui/getting-started/installation/"
           >
             Workshops
           </Link>
           <Link
-          underline="hover"
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="secondary"
-          href="/material-ui/getting-started/installation/"
-        >
-          One-Workshop
-        </Link>
+            underline="hover"
+            sx={{ display: 'flex', alignItems: 'center' }}
+            color="secondary"
+            // href="/material-ui/getting-started/installation/"
+          >
+            One-Workshop
+          </Link>
+          <Link
+            underline="hover"
+            sx={{ display: 'flex', alignItems: 'center' }}
+            color="secondary"
+            // href="/material-ui/getting-started/installation/"
+          >
+            {participantData[0].name}
+          </Link>
         </Breadcrumbs> 
       </div>
 

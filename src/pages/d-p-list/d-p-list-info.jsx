@@ -42,7 +42,7 @@ const DPLInfo = () => {
             </ListItem>
           </List>
         </Box>
-        <Box sx={{backgroundColor:"white", width:"85%", borderRadius: "15px", border: "2px", borderColor: "primary", borderStyle: "solid", marginTop: "20px", paddingTop: "15px", paddingBottom: "15px", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+        <Box sx={{backgroundColor:"white", width:"85%", borderRadius: "15px", border: "2px", borderColor: "primary", borderStyle: "solid", marginTop: "10px", paddingTop: "15px", paddingBottom: "15px", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
           <Typography variant="h6" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>Progress   {data.progress}</Typography>
           <BorderLinearProgress variant="determinate" value={parseFloat(data.progress)} sx={{width:"80%", height:"25px", borderRadius: "10px", marginTop:"5px", marginBottom:"5px"}}/>
           <Box  sx={{ display: 'flex', justifyContent: 'space-around', width:"100%", marginTop: "20px" }}>
@@ -55,28 +55,28 @@ const DPLInfo = () => {
           </Box>
         </Box>
 
-        <Typography variant="h5" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center', marginTop: "20px"}}>Batches</Typography>
+        <Typography variant="h5" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center', marginTop: "10px"}}>Batches</Typography>
         <List sx={{width: "85%"}}>
           <ListItem disablePadding>
-            <ListItemButton sx={{display:"flex", justifyContent: "space-between", borderRadius: "10px", border: "2px", borderColor: "primary", borderStyle: "solid"}}>
+            <ListItemButton sx={{display:"flex", justifyContent: "space-between", borderRadius: "10px", border: "2px", borderColor: "primary", bgcolor: "white", borderStyle: "solid"}}>
               <ListItemText primary="Print"/>
               <ListItemIcon sx={{display:"flex", justifyContent: "center"}}><PrintOutlinedIcon color="primary" /></ListItemIcon>
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton sx={{display:"flex", justifyContent: "space-between", borderRadius: "10px", border: "2px", borderColor: "primary", borderStyle: "solid", marginTop:"15px"}}>
+            <ListItemButton sx={{display:"flex", justifyContent: "space-between", borderRadius: "10px", border: "2px", borderColor: "primary", bgcolor: "white", borderStyle: "solid", marginTop:"10px"}}>
               <ListItemText primary="E-mail"/>
               <ListItemIcon sx={{display:"flex", justifyContent: "center"}}><ForwardToInboxOutlinedIcon color="primary" /></ListItemIcon>
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton sx={{display:"flex", justifyContent: "space-between", borderRadius: "10px", border: "2px", borderColor: "primary", borderStyle: "solid", marginTop:"15px"}}>
+            <ListItemButton sx={{display:"flex", justifyContent: "space-between", borderRadius: "10px", border: "2px", borderColor: "primary", bgcolor: "white", borderStyle: "solid", marginTop:"10px"}}>
               <ListItemText primary="Save to PDF"/>
               <ListItemIcon sx={{display:"flex", justifyContent: "center"}}><FileDownloadOutlinedIcon color="primary" /></ListItemIcon>
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton sx={{display:"flex", justifyContent: "space-between", borderRadius: "10px", border: "2px", borderColor: "primary", borderStyle: "solid", marginTop:"15px", marginBottom: "20px"}}>
+            <ListItemButton sx={{display:"flex", justifyContent: "space-between", borderRadius: "10px", border: "2px", borderColor: "primary", bgcolor: "white", borderStyle: "solid", marginTop:"10px", marginBottom: "10px"}}>
               <ListItemText primary="Save to Word"/>
               <ListItemIcon sx={{display:"flex", justifyContent: "center"}}><TextSnippetOutlinedIcon color="primary" /></ListItemIcon>
             </ListItemButton>
