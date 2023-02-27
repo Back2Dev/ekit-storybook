@@ -10,6 +10,16 @@ const theme = createTheme({
     secondary: {
       main: '#cb1c33',
     },
+    alternative: {
+      main: '#69a7a9',
+      light: '#9ad9db',
+      dark: '#39787a',
+    },
+    grey: {
+      main: '#9E9E9E',
+      light: '#cfcfcf',
+      dark: '#707070',
+    },
   },
 });
 
