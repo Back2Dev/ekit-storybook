@@ -3,6 +3,7 @@ import "react-tabulator/lib/styles.css"; // default theme
 import "react-tabulator/css/bootstrap/tabulator_bootstrap.min.css"; // use Theme(s)
 import { ReactTabulator} from "react-tabulator";
 import { Box, Grid } from '@mui/material'
+
 import DWPInfo from './d-ws-page-info';
 import DWSPageContext from './d-ws-page-provider';
 
@@ -157,7 +158,6 @@ const DWPView = () => {
   };
 
   return (
-
       <Box sx={{ flexGrow: 1 }}>
         <Grid container >
           <Grid item xs={infoButton ? 8.5 : 12}>
@@ -179,7 +179,6 @@ const DWPView = () => {
           </Grid>
         </Grid>
       </Box>
-      
   )
 }
 

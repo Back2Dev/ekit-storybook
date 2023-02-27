@@ -46,7 +46,6 @@ const DWLView = () => {
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
-        // disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
         onRowClick={(params) => {
           console.log(params.id);
