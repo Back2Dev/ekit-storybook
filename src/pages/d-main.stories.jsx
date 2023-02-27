@@ -3,6 +3,7 @@ import DMain from "./d-main";
 import DTopBar from './d-top-bar/d-top-bar'
 import DWList from './d-ws-list/d-ws-list'
 import DWPage from './d-ws-page/d-ws-page'
+import DPList from './d-p-list/d-p-list'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -39,6 +40,15 @@ export const WorkshopPage = () => {
     <ThemeProvider theme={theme}>
       <DTopBar />
       <DWPage />
+    </ThemeProvider>
+  );
+};
+
+export const ParticipantList = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <DTopBar />
+      <DPList />
     </ThemeProvider>
   );
 };

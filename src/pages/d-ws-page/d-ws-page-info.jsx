@@ -28,9 +28,9 @@ const DWPInfo = () => {
           <Typography sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>Participants: {data.Participants}</Typography>
           <Typography variant="h6" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>{data.Type}</Typography>
         </Box>
-        <Box sx={{backgroundColor:"white", width:"85%", borderRadius: "15px", border: "2px", borderColor: "primary", borderStyle: "solid", marginTop: "20px", paddingTop: "15px", paddingBottom: "15px", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
-          <Typography variant="h6" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>Progress   {data.Progress}</Typography>
-          <BorderLinearProgress variant="determinate" value={parseFloat(data.Progress)} sx={{width:"80%", height:"25px", borderRadius: "10px", marginTop:"5px", marginBottom:"5px"}}/>
+        <Box sx={{backgroundColor:"white", width:"85%", borderRadius: "15px", border: "2px", borderColor: "primary", borderStyle: "solid", marginTop: "20px", paddingTop: "15px", paddingBottom: "15px", marginBottom: "20px", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+          <Typography variant="h6" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>Progress   {data.Progress *100}%</Typography>
+          <BorderLinearProgress variant="determinate" value={parseFloat(data.Progress)*100} sx={{width:"80%", height:"25px", borderRadius: "10px", marginTop:"5px", marginBottom:"5px"}}/>
           <Box  sx={{ display: 'flex', justifyContent: 'space-around', width:"100%", marginTop: "20px" }}>
             <Button variant="outlined" color="error" >
               Reject

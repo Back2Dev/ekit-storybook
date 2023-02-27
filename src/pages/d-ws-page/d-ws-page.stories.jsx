@@ -6,6 +6,11 @@ import DWPInfo from './d-ws-page-info';
 
 import { Box } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { DWSPageProvider } from './d-ws-page-provider';
+
+const initialState = {
+  infoButton: false,
+}
 
 const theme = createTheme({
     palette: {
@@ -29,7 +34,9 @@ export default {
 export const Default = () => {
   return (
     <ThemeProvider theme={theme}>
-      <DWPage />;
+      <DWSPageProvider initialState={initialState}>
+        <DWPage />
+      </DWSPageProvider>
     </ThemeProvider>
   );
 };
@@ -37,7 +44,9 @@ export const Default = () => {
 export const Bar = () => {
   return (
     <ThemeProvider theme={theme}>
-      <DWPBar />
+      <DWSPageProvider initialState={initialState}>
+        <DWPBar />
+      </DWSPageProvider>
     </ThemeProvider>
   );
 }
@@ -45,7 +54,9 @@ export const Bar = () => {
 export const View = () => {
   return (
     <ThemeProvider theme={theme}>
-      <DWPView />
+      <DWSPageProvider initialState={initialState}>
+        <DWPView />
+      </DWSPageProvider>
     </ThemeProvider>
   );
 }

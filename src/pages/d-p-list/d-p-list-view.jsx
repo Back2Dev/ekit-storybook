@@ -103,7 +103,7 @@ const DPLView = () =>{
   return(
     <Box sx={{ flexGrow: 1 }} height="100%">
       <Grid container >
-        <Grid item xs={infoButton ? 9.5 : 12}>
+        <Grid item xs={infoButton ? 8.5 : 12}>
             <Box sx={{width: 'auto', height: '30px', bgcolor:"gray", color: 'secondary.main', fontSize:'1.2rem', display: 'flex', alignItems: 'center', paddingLeft: '20px', borderRadius: '15px 15px 0 0', borderBottom:'1px solid black'}}>
               {pData.name}
             </Box>
@@ -152,8 +152,10 @@ const DPLView = () =>{
               />
             </Box>
         </Grid>
-        <Grid item xs={infoButton ? 0 : 2.5} hidden={!infoButton}>
-          <DPLInfo data={pData} />
+        <Grid item xs={3.5} hidden={!infoButton}>
+          <Box sx={{width:"100%"}}>
+            <DPLInfo data={pData} />
+          </Box>
         </Grid>
       </Grid>
     </Box>

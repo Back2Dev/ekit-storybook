@@ -11,8 +11,8 @@ const DMain = () => {
     <div className='d-main'>
       <DTopBar />
       <DWList />
-      {/* <DWPage /> */}
-      {/* <DPList /> */}
+      <DWPage />
+      <DPList />
     </div>
   )
 }
