@@ -1,3 +1,5 @@
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Accordion,
@@ -7,6 +9,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Popover,
   Switch,
   Typography,
 } from '@mui/material';
@@ -127,6 +130,122 @@ const FilterList = ({ workshops, setFilteredWorkshops }) => {
   );
 };
 
+const SortButton = ({ direction, onClick, active }) => (
+  <Button onClick={onClick} color={active ? 'secondary' : 'primary'}>
+    {direction === 'asc' ? (
+      <ArrowDropUpIcon color={active ? 'secondary' : 'primary'} />
+    ) : (
+      <ArrowDropDownIcon color={active ? 'secondary' : 'primary'} />
+    )}
+  </Button>
+);
+
+const SortPopover = ({ onSort }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [sortOrder, setSortOrder] = useState({
+    field: 'date',
+    direction: 'asc',
+  });
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleSort = (field) => {
+    const direction =
+      sortOrder.field === field
+        ? sortOrder.direction === 'asc'
+          ? 'desc'
+          : 'asc'
+        : 'asc';
+    setSortOrder({ field, direction });
+    onSort(field, direction);
+  };
+
+  const handleButtonClick = (field) => {
+    if (field === 'date') {
+      handleSort(field);
+    } else {
+      const direction =
+        sortOrder.field === field
+          ? sortOrder.direction === 'asc'
+            ? 'desc'
+            : 'asc'
+          : 'asc';
+      setSortOrder({ field, direction });
+      onSort(field, direction);
+    }
+  };
+
+  return (
+    <>
+      <Button variant="contained" onClick={handleClick}>
+        Sort
+      </Button>
+      <Popover
+        open={Boolean(anchorEl)}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
+        <div style={{ padding: '8px' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-end',
+            }}
+          >
+            <Button onClick={() => handleButtonClick('date')}>
+              Date
+              <SortButton
+                active={sortOrder.field === 'date'}
+                direction={
+                  sortOrder.field === 'date' ? sortOrder.direction : null
+                }
+              />
+            </Button>
+            <Button onClick={() => handleButtonClick('workshop')}>
+              Alphabetical
+              <SortButton
+                active={sortOrder.field === 'workshop'}
+                direction={
+                  sortOrder.field === 'workshop' ? sortOrder.direction : null
+                }
+              />
+            </Button>
+            <Button onClick={() => handleButtonClick('participants')}>
+              Participants
+              <SortButton
+                active={sortOrder.field === 'participants'}
+                direction={
+                  sortOrder.field === 'participants'
+                    ? sortOrder.direction
+                    : null
+                }
+              />
+            </Button>
+            <Button onClick={() => handleButtonClick('progress')}>
+              Progress %
+              <SortButton
+                active={sortOrder.field === 'progress'}
+                direction={
+                  sortOrder.field === 'progress' ? sortOrder.direction : null
+                }
+              />
+            </Button>
+          </div>
+        </div>
+      </Popover>
+    </>
+  );
+};
+
 const WorkshopList = () => {
   const [filteredWorkshops, setFilteredWorkshops] = useState(workshops);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
@@ -160,42 +279,18 @@ const WorkshopList = () => {
   }, [sortConfig, filteredWorkshops]);
 
   return (
-    <div style={{ backgroundColor: '#c9cdd6' }}>
+    <div style={{ backgroundColor: '#f2f3f6' }}>
       <FilterList
         workshops={workshops}
         setFilteredWorkshops={setFilteredWorkshops}
       />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', marginBottom: '8px' }}>
-          <Button
-            variant="outlined"
-            onClick={() => handleSort('date')}
-            style={{ marginRight: '8px' }}
-          >
-            Date
-          </Button>
-          <Button
-            variant="outlined"
-            onClick={() => handleSort('workshop')}
-            style={{ marginRight: '8px' }}
-          >
-            Workshop
-          </Button>
-          <Button
-            variant="outlined"
-            onClick={() => handleSort('participants')}
-            style={{ marginRight: '8px' }}
-          >
-            Participants
-          </Button>
-          <Button
-            variant="outlined"
-            onClick={() => handleSort('progress')}
-            style={{ marginRight: '8px' }}
-          >
-            Progress
-          </Button>
-        </div>
+        <SortPopover
+          style={{ marginTop: '10px' }}
+          onSort={(field, direction) => handleSort(field, direction)}
+        >
+          <Button variant="outlined">Sort</Button>
+        </SortPopover>
         {sortedWorkshops.map((workshop) => (
           <WorkshopCard
             key={workshop.id}

@@ -67,7 +67,10 @@ function WorkshopCard({ workshop, category, date, participants, progress }) {
   }
 
   return (
-    <Card style={{ maxWidth: 550, margin: '10px' }}>
+    <Card
+      style={{ maxWidth: 550, margin: '10px' }}
+      sx={{ border: 1, borderColor: 'grey.main' }}
+    >
       <CardContent>
         <Box
           style={{ display: 'flex', justifyContent: 'space-between' }}
