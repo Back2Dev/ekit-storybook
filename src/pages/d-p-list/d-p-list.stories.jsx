@@ -1,12 +1,16 @@
 import React from "react";
-import DPList from './d-p-list'
-import DPLBar from './d-p-list-bar'
-import DPLView from './d-p-list-view';
-import DPLInfo from './d-p-list-info'
 
-import { Box } from '@mui/material'
+import DSNavbar from '../d-sub-navbar/d-sub-navbar';
+import DPList from './d-p-list';
+import DPLView from './d-p-list-view';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { DPListProvider } from './d-p-list-provider'
+import { DesktopProvider } from '../d-provider/d-provider';
+
+export default {
+  title: 'DeskParticipantList',
+  component: DPList,
+};
 
 const initialState = {
   infoButton: false,
@@ -26,49 +30,23 @@ const theme = createTheme({
     },
   });
 
-export default {
-    title: 'DeskParticipantList',
-    component: DPList,
-};
-
 export const Default = () => {
   return (
     <ThemeProvider theme={theme}>
-      <DPListProvider initialState={initialState}>
+      <DesktopProvider initialState={initialState}>
+        <DSNavbar />
         <DPList />
-      </DPListProvider>
+      </DesktopProvider>
     </ThemeProvider>
   );
 };
-
-export const Bar = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <DPListProvider initialState={initialState}>
-        <DPLBar />
-      </DPListProvider>
-    </ThemeProvider>
-  );
-}
 
 export const View = () => {
   return (
     <ThemeProvider theme={theme}>
-      <DPListProvider initialState={initialState}>
+      <DesktopProvider initialState={initialState}>
         <DPLView />
-      </DPListProvider>
-    </ThemeProvider>
-  );
-}
-
-export const Info = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ width: "400px"}}>
-        <DPListProvider initialState={initialState}>
-          <DPLInfo />
-        </DPListProvider>
-      </Box>
+      </DesktopProvider>
     </ThemeProvider>
   );
 }

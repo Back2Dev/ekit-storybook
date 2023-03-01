@@ -2,13 +2,13 @@ import React from 'react'
 import { Box, Grid, Typography, Stepper, Step, StepButton } from '@mui/material'
 
 import DFInfo from './d-form-info'
-import DFormContext from './d-form-provider'
+import DesktopContext from '../d-provider/d-provider'
 
 import { participantData } from '../../moca_data'
 
 const DFView = () =>{
 
-  const { infoButton } = React.useContext(DFormContext);
+  const { infoButton } = React.useContext(DesktopContext);
   const [activeStep, setActiveStep] = React.useState(0);
 
 

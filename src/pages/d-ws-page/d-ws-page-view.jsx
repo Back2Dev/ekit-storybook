@@ -3,7 +3,7 @@ import { DataGrid } from '@mui/x-data-grid'
 import { Box, Grid, Button } from '@mui/material'
 
 import DWPInfo from './d-ws-page-info';
-import DWSPageContext from './d-ws-page-provider';
+import DesktopContext from '../d-provider/d-provider';
 
 import { wsData } from '../../moca_data';
 
@@ -32,7 +32,7 @@ const pButton = (value) => {
 
 const DWPView = () => {
 
-  const { infoButton } = React.useContext(DWSPageContext);
+  const { infoButton } = React.useContext(DesktopContext);
 
   // columns setting
   const columns = [

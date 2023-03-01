@@ -7,7 +7,7 @@ import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import FileDownloadRoundedIcon from '@mui/icons-material/FileDownloadRounded';
 
 import DPLInfo from './d-p-list-info'
-import DPListContext from './d-p-list-provider'
+import DesktopContext from '../d-provider/d-provider';
 
 import { participantData } from '../../moca_data'
 
@@ -20,7 +20,7 @@ const f_date = (date) => {
 
 const DPLView = () =>{
 
-  const { infoButton } = React.useContext(DPListContext);
+  const { infoButton } = React.useContext(DesktopContext);
   const [peerOpen, setPeerOpen] = React.useState(true);
   const [bossOpen, setBossOpen] = React.useState(true);
 

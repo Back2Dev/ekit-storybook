@@ -1,13 +1,11 @@
 import React from 'react';
-import DWLBar from './d-ws-list-bar';
 import DWLView from './d-ws-list-view';
 
 const DWList = () => {
   return (
-    <>
-      <DWLBar />
+    <div className='desktop-workshops-list-page'>
       <DWLView />
-    </>
+    </div>
   )
 }
 

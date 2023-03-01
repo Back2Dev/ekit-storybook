@@ -1,12 +1,16 @@
 import React from "react";
-import DForm from './d-form'
-import DFBar from './d-form-bar'
-import DFView from './d-form-view'
-import DFInfo from './d-form-info'
 
-import { Box } from '@mui/material'
+import DSNavbar from '../d-sub-navbar/d-sub-navbar';
+import DForm from './d-form'
+import DFView from './d-form-view'
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { DFormProvider } from './d-form-provider'
+import { DesktopProvider } from '../d-provider/d-provider';
+
+export default {
+  title: 'DeskForm',
+  component: DForm,
+};
 
 const initialState = {
   infoButton: false,
@@ -26,49 +30,23 @@ const theme = createTheme({
     },
   });
 
-export default {
-    title: 'DeskForm',
-    component: DForm,
-};
-
 export const Default = () => {
   return (
     <ThemeProvider theme={theme}>
-      <DFormProvider initialState={initialState}>
+      <DesktopProvider initialState={initialState}>
+        <DSNavbar />
         <DForm />
-      </DFormProvider>
+      </DesktopProvider>
     </ThemeProvider>
   );
 };
-
-export const Bar = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <DFormProvider initialState={initialState}>
-        <DFBar />
-      </DFormProvider>
-    </ThemeProvider>
-  );
-}
 
 export const View = () => {
   return (
     <ThemeProvider theme={theme}>
-      <DFormProvider initialState={initialState}>
+      <DesktopProvider initialState={initialState}>
         <DFView />
-      </DFormProvider>
-    </ThemeProvider>
-  );
-}
-
-export const Info = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ width: "400px"}}>
-        <DFormProvider initialState={initialState}>
-          <DFInfo />
-        </DFormProvider>
-      </Box>
+      </DesktopProvider>
     </ThemeProvider>
   );
 }

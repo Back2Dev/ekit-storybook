@@ -1,8 +1,20 @@
 import React from "react";
+
+import DSNavbar from '../d-sub-navbar/d-sub-navbar';
 import DWList from "./d-ws-list";
-import DWLBar from './d-ws-list-bar';
 import DWLView from './d-ws-list-view';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { DesktopProvider } from '../d-provider/d-provider';
+
+export default {
+  title: 'DeskWorkshopList',
+  component: DWList,
+};
+
+const initialState = {
+  infoButton: false,
+}
 
 const theme = createTheme({
     palette: {
@@ -18,31 +30,23 @@ const theme = createTheme({
     },
   });
 
-export default {
-    title: 'DeskWorkshopList',
-    component: DWList,
-};
-
 export const Default = () => {
   return (
     <ThemeProvider theme={theme}>
-      <DWList />;
+      <DesktopProvider initialState={initialState}>
+        <DSNavbar />
+        <DWList />;
+      </DesktopProvider>
     </ThemeProvider>
   );
 };
 
-export const Bar = () => {
-    return (
-        <ThemeProvider theme={theme}>
-        <DWLBar />
-        </ThemeProvider>
-    );
-}
-
 export const View = () => {
     return (
-        <ThemeProvider theme={theme}>
-        <DWLView />
-        </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <DesktopProvider initialState={initialState}>
+          <DWLView />
+        </DesktopProvider>
+      </ThemeProvider>
     );
 }

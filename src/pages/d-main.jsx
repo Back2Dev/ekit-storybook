@@ -1,20 +1,25 @@
 import React from 'react'
-import DTopBar from './d-top-bar/d-top-bar'
-import DWList from './d-ws-list/d-ws-list'
-import DWPage from './d-ws-page/d-ws-page'
-import DPList from './d-p-list/d-p-list'
-import DForm from './d-form/d-form'
 
+import DMainView from './d-mian-view'
+
+import { DesktopProvider } from './d-provider/d-provider'
 import './d-style.css'
 
+import { listData } from '../moca_data';
+
 const DMain = () => {
+
+  const initialState = {
+    infoButton: false,
+    pageNavData: {title: ['Workshops'], data: listData},
+    pageNow: 'workshops',
+  }
+
   return (
     <div className='d-main'>
-      <DTopBar />
-      {/* <DWList /> */}
-      {/* <DWPage /> */}
-      {/* <DPList /> */}
-      <DForm />
+      <DesktopProvider initialState={initialState}>
+        <DMainView />
+      </DesktopProvider>
     </div>
   )
 }
