@@ -2,6 +2,9 @@ import * as React from 'react';
 import { Box, LinearProgress, Button, styled, linearProgressClasses } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { listData } from '../../moca_data';
+import { wsData } from '../../moca_data';
+
+import DesktopContext from '../d-provider/d-provider';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   [`&.${linearProgressClasses.colorPrimary}`]: {
@@ -67,6 +70,9 @@ const columns = [
 ];
 
 const DWLView = () => {
+
+  const { setPageNavData, setPageNow } = React.useContext(DesktopContext)
+
   return (
     <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
@@ -79,7 +85,9 @@ const DWLView = () => {
         rowHeight={45}
         hideFooterSelectedRowCount={true}
         onRowClick={(params) => {
-          console.log(params.id);
+          console.log(params.id)
+          setPageNavData({ title: ['Workshops', 'One-workshop'], data: wsData});
+          setPageNow('workshopPage');
         }}
       />
     </Box>

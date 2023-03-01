@@ -5,7 +5,7 @@ import { Box, Grid, Button } from '@mui/material'
 import DWPInfo from './d-ws-page-info';
 import DesktopContext from '../d-provider/d-provider';
 
-import { wsData } from '../../moca_data';
+import { wsData, participantData } from '../../moca_data';
 
 const pButton = (value) => {
   const n = parseFloat(value.formattedValue)
@@ -32,7 +32,7 @@ const pButton = (value) => {
 
 const DWPView = () => {
 
-  const { infoButton } = React.useContext(DesktopContext);
+  const { infoButton, setPageNavData, setPageNow } = React.useContext(DesktopContext);
 
   // columns setting
   const columns = [
@@ -71,7 +71,11 @@ const DWPView = () => {
               headerHeight={45}
               rowHeight={45}
               hideFooterSelectedRowCount={true}
-              
+              onRowClick={(params) => {
+                console.log(params.id)
+                setPageNavData({ title: ['Workshops', 'One-workshop', 'John Smith'], data: participantData});
+                setPageNow('participant');
+              }}
             />
           </Grid>
           <Grid item xs={3.5} hidden={!infoButton}>

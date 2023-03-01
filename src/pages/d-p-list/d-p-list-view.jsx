@@ -20,7 +20,7 @@ const f_date = (date) => {
 
 const DPLView = () =>{
 
-  const { infoButton } = React.useContext(DesktopContext);
+  const { infoButton, setPageNavData, setPageNow } = React.useContext(DesktopContext);
   const [peerOpen, setPeerOpen] = React.useState(true);
   const [bossOpen, setBossOpen] = React.useState(true);
 
@@ -117,6 +117,11 @@ const DPLView = () =>{
               headerHeight={45}
               rowHeight={45}
               hideFooterSelectedRowCount={true}
+              onRowClick={(params) => {
+                console.log(params.id)
+                setPageNavData({ title: ['Workshops', 'One-workshop', 'John Smith', 'Q10A - xxxx'], data: participantData});
+                setPageNow('form');
+              }}
             />
             <Box onClick={() => setPeerOpen(!peerOpen)} sx={{width: 'auto', height: '35px', bgcolor:"primary.main", color: 'secondary.main', fontSize:'1.2rem', display: 'flex', alignItems: 'center', paddingLeft: '20px', borderRadius: '15px 15px 0 0', borderBottom:'1px solid white'}}>
               Peers
@@ -132,7 +137,11 @@ const DPLView = () =>{
                 headerHeight={45}
                 rowHeight={45}
                 hideFooterSelectedRowCount={true}
-                
+                onRowClick={(params) => {
+                  console.log(params.id)
+                  setPageNavData({ title: ['Workshops', 'One-workshop', 'John Smith', 'Q10A - xxxx'], data: participantData});
+                  setPageNow('form');
+                }}
               />
             </Box>
             <Box onClick={() => setBossOpen(!bossOpen)} sx={{width: 'auto', height: '35px', bgcolor:"primary.main", color: 'secondary.main', fontSize:'1.2rem', display: 'flex', alignItems: 'center', paddingLeft: '20px', borderRadius: '15px 15px 0 0', borderBottom:'1px solid white'}}>
@@ -149,6 +158,11 @@ const DPLView = () =>{
                 headerHeight={45}
                 rowHeight={45}
                 hideFooterSelectedRowCount={true}
+                onRowClick={(params) => {
+                  console.log(params.id)
+                  setPageNavData({ title: ['Workshops', 'One-workshop', 'John Smith', 'Q10A - xxxx'], data: participantData});
+                  setPageNow('form');
+                }}
               />
             </Box>
         </Grid>

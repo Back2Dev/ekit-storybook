@@ -53,7 +53,7 @@ const DSNavbar = (props) => {
       setPageNow('workshops');
     } else if (index === 1){
       setPageNavData({title: ['Workshops', 'One-Workshop'], data: wsData})
-      setPageNow('workshopPagep');
+      setPageNow('workshopPage');
     } else if (index === 2){
       setPageNavData({title: ['Workshops', 'One-Workshop', 'Participant'], data: participantData})
       setPageNow('participant');
@@ -75,39 +75,6 @@ const DSNavbar = (props) => {
               </Link>
             )
           })}
-          
-          {/* <Link
-            underline="hover"
-            sx={{ display: 'flex', alignItems: 'center' }}
-            color="secondary"
-            // href="/material-ui/getting-started/installation/"
-          >
-            Workshops
-          </Link>
-          <Link
-            underline="hover"
-            sx={{ display: 'flex', alignItems: 'center' }}
-            color="secondary"
-            // href="/material-ui/getting-started/installation/"
-          >
-            One-Workshop
-          </Link>
-          <Link
-            underline="hover"
-            sx={{ display: 'flex', alignItems: 'center' }}
-            color="secondary"
-            // href="/material-ui/getting-started/installation/"
-          >
-            {participantData[0].name}
-          </Link>          
-          <Link
-            underline="hover"
-            sx={{ display: 'flex', alignItems: 'center' }}
-            color="secondary"
-            // href="/material-ui/getting-started/installation/"
-          >
-            {participantData[0].forms[0].f_name}
-          </Link> */}
         </Breadcrumbs> 
       </div>
 
