@@ -9,7 +9,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  Popover,
   Switch,
   Typography,
 } from '@mui/material';
@@ -140,20 +139,11 @@ const SortButton = ({ direction, onClick, active }) => (
   </Button>
 );
 
-const SortPopover = ({ onSort }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
+const SortAccordion = ({ onSort }) => {
   const [sortOrder, setSortOrder] = useState({
     field: 'date',
     direction: 'asc',
   });
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const handleSort = (field) => {
     const direction =
@@ -182,67 +172,63 @@ const SortPopover = ({ onSort }) => {
   };
 
   return (
-    <>
-      <Button variant="contained" onClick={handleClick}>
-        Sort
-      </Button>
-      <Popover
-        open={Boolean(anchorEl)}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+    <Accordion>
+      <AccordionSummary
+        sx={{
+          '&.Mui-expanded': {
+            minHeight: 0,
+          },
+          '& .MuiAccordionSummary-content.Mui-expanded': {
+            margin: '12px 0 0 0 ',
+          },
+        }}
+        expandIcon={<ExpandMoreIcon />}
       >
-        <div style={{ padding: '8px' }}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-end',
-            }}
-          >
-            <Button onClick={() => handleButtonClick('date')}>
-              Date
-              <SortButton
-                active={sortOrder.field === 'date'}
-                direction={
-                  sortOrder.field === 'date' ? sortOrder.direction : null
-                }
-              />
-            </Button>
-            <Button onClick={() => handleButtonClick('workshop')}>
-              Alphabetical
-              <SortButton
-                active={sortOrder.field === 'workshop'}
-                direction={
-                  sortOrder.field === 'workshop' ? sortOrder.direction : null
-                }
-              />
-            </Button>
-            <Button onClick={() => handleButtonClick('participants')}>
-              Participants
-              <SortButton
-                active={sortOrder.field === 'participants'}
-                direction={
-                  sortOrder.field === 'participants'
-                    ? sortOrder.direction
-                    : null
-                }
-              />
-            </Button>
-            <Button onClick={() => handleButtonClick('progress')}>
-              Progress %
-              <SortButton
-                active={sortOrder.field === 'progress'}
-                direction={
-                  sortOrder.field === 'progress' ? sortOrder.direction : null
-                }
-              />
-            </Button>
-          </div>
-        </div>
-      </Popover>
-    </>
+        <Typography variant="subtitle1">Sort</Typography>
+      </AccordionSummary>
+      <AccordionDetails
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+        }}
+      >
+        <Button onClick={() => handleButtonClick('date')}>
+          Date
+          <SortButton
+            active={sortOrder.field === 'date'}
+            direction={sortOrder.field === 'date' ? sortOrder.direction : null}
+          />
+        </Button>
+        <Button onClick={() => handleButtonClick('workshop')}>
+          Alphabetical
+          <SortButton
+            active={sortOrder.field === 'workshop'}
+            direction={
+              sortOrder.field === 'workshop' ? sortOrder.direction : null
+            }
+          />
+        </Button>
+        <Button onClick={() => handleButtonClick('participants')}>
+          Participants
+          <SortButton
+            active={sortOrder.field === 'participants'}
+            direction={
+              sortOrder.field === 'participants' ? sortOrder.direction : null
+            }
+          />
+        </Button>
+        <Button onClick={() => handleButtonClick('progress')}>
+          Progress %
+          <SortButton
+            active={sortOrder.field === 'progress'}
+            direction={
+              sortOrder.field === 'progress' ? sortOrder.direction : null
+            }
+          />
+        </Button>
+      </AccordionDetails>
+    </Accordion>
   );
 };
 
@@ -280,17 +266,18 @@ const WorkshopList = () => {
 
   return (
     <div style={{ backgroundColor: '#f2f3f6' }}>
-      <FilterList
-        workshops={workshops}
-        setFilteredWorkshops={setFilteredWorkshops}
-      />
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <SortPopover
-          style={{ marginTop: '10px' }}
-          onSort={(field, direction) => handleSort(field, direction)}
-        >
-          <Button variant="outlined">Sort</Button>
-        </SortPopover>
+      <div>
+        <div style={{ display: 'flex' }}>
+          <FilterList
+            workshops={workshops}
+            setFilteredWorkshops={setFilteredWorkshops}
+          />
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <SortAccordion
+              onSort={(field, direction) => handleSort(field, direction)}
+            />
+          </div>
+        </div>
         {sortedWorkshops.map((workshop) => (
           <WorkshopCard
             key={workshop.id}
