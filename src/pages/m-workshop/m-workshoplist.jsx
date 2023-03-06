@@ -129,21 +129,40 @@ const FilterList = ({ workshops, setFilteredWorkshops }) => {
   );
 };
 
-const SortButton = ({ direction, onClick, active }) => (
-  <Button onClick={onClick} color={active ? 'secondary' : 'primary'}>
-    {direction === 'asc' ? (
-      <ArrowDropUpIcon color={active ? 'secondary' : 'primary'} />
-    ) : (
-      <ArrowDropDownIcon color={active ? 'secondary' : 'primary'} />
-    )}
-  </Button>
-);
-
 const SortAccordion = ({ onSort }) => {
   const [sortOrder, setSortOrder] = useState({
     field: 'date',
     direction: 'asc',
   });
+
+  const SortButton = ({ direction, onClick, active }) => (
+    <Button onClick={onClick} color={active ? 'secondary' : 'primary'}>
+      {direction === 'asc' ? (
+        <ArrowDropUpIcon color={active ? 'secondary' : 'primary'} />
+      ) : (
+        <ArrowDropDownIcon color={active ? 'secondary' : 'primary'} />
+      )}
+    </Button>
+  );
+
+  const accordionRef = useRef();
+
+  useEffect(() => {
+    const handleClick = (event) => {
+      if (
+        accordionRef.current &&
+        !accordionRef.current.contains(event.target)
+      ) {
+        accordionRef.current
+          .querySelector('.MuiButtonBase-root.Mui-expanded')
+          ?.click();
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, [accordionRef]);
 
   const handleSort = (field) => {
     const direction =
@@ -152,7 +171,10 @@ const SortAccordion = ({ onSort }) => {
           ? 'desc'
           : 'asc'
         : 'asc';
+
     setSortOrder({ field, direction });
+
+    console.log('Sorting by:', field, direction);
     onSort(field, direction);
   };
 
@@ -172,7 +194,7 @@ const SortAccordion = ({ onSort }) => {
   };
 
   return (
-    <Accordion>
+    <Accordion ref={accordionRef}>
       <AccordionSummary
         sx={{
           '&.Mui-expanded': {
@@ -267,17 +289,16 @@ const WorkshopList = () => {
   return (
     <div style={{ backgroundColor: '#f2f3f6' }}>
       <div>
-        <div style={{ display: 'flex' }}>
-          <FilterList
-            workshops={workshops}
-            setFilteredWorkshops={setFilteredWorkshops}
+        <FilterList
+          workshops={workshops}
+          setFilteredWorkshops={setFilteredWorkshops}
+        />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <SortAccordion
+            onSort={(field, direction) => handleSort(field, direction)}
           />
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <SortAccordion
-              onSort={(field, direction) => handleSort(field, direction)}
-            />
-          </div>
         </div>
+
         {sortedWorkshops.map((workshop) => (
           <WorkshopCard
             key={workshop.id}
