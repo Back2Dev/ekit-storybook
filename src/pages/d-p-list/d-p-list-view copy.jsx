@@ -1,7 +1,6 @@
 import React from 'react'
+import { DataGrid } from '@mui/x-data-grid'
 import { Box, Grid, Typography } from '@mui/material'
-import 'react-data-grid/lib/styles.css'
-import DataGrid from 'react-data-grid'
 
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
@@ -75,23 +74,26 @@ const DPLView = () =>{
 
   // columns setting
   const columns = [
-    { key: 'id', name: 'ID', width: 80 },
-    { key: 'name', name: 'Name', width: 150, editable: false },
-    { key: 'form', name: 'Form', width: 250, editable: false },
-    { key: 'last_update', name: 'Last Update', width: 150, editable: false },
-    { key: 'due_date', name: 'Due Date', width: 150, editable: false },
-    { key: 'completed', name: 'Completed',
-    formatter: (props) => {
-        if (props.row.completed) {
+    { field: 'id', headerName: 'ID', width: 80 },
+    { field: 'name', headerName: 'Name', width: 150, editable: false },
+    { field: 'form', headerName: 'Form', width: 250, editable: false },
+    { field: 'last_update', headerName: 'Last Update', width: 150, editable: false },
+    { field: 'due_date', headerName: 'Due Date', width: 150, editable: false },
+    { field: 'completed', 
+      headerName: 'Completed', 
+      align: 'center',
+      renderCell: (isCompleted) => {
+        if (isCompleted.formattedValue) {
           return <CheckRoundedIcon sx={{color: 'green'}} />
         } else {
           return <ClearRoundedIcon sx={{color:'red'}} />
         }
       }
     },
-    { key: 'download', name: 'Download', 
-      formatter: (props) => {
-        const url = props.row.download;
+    { field: 'download', 
+      headerName: 'Download', 
+      align: 'center',
+      renderCell: (url) => {
         // return <a href={url.formattedValue} target="_blank" rel="noopener noreferrer"><FileDownloadRoundedIcon color='primary.main'/></a>
         return <FileDownloadRoundedIcon color='primary.main'/>
       }
@@ -105,21 +107,22 @@ const DPLView = () =>{
             <Box sx={{width: 'auto', height: '30px', bgcolor:"gray", color: 'secondary.main', fontSize:'1.2rem', display: 'flex', alignItems: 'center', paddingLeft: '20px', borderRadius: '15px 15px 0 0', borderBottom:'1px solid black'}}>
               {pData.name}
             </Box>
-            <Box>
-              <DataGrid
-                rows={rows}
-                columns={columns}
-              
-                headerHeight={45}
-                rowHeight={45}
-
-                onCellClick={(params) => {
-                  console.log(params.id)
-                  setPageNavData({ title: ['Workshops', 'One-workshop', 'John Smith', 'Q10A - xxxx'], data: participantData});
-                  setPageNow('form');
-                }}
-              />
-            </Box>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              autoHeight={true}
+              autoPageSize={true}
+              pageSize={15}
+              disableColumnMenu={true}
+              headerHeight={45}
+              rowHeight={45}
+              hideFooterSelectedRowCount={true}
+              onRowClick={(params) => {
+                console.log(params.id)
+                setPageNavData({ title: ['Workshops', 'One-workshop', 'John Smith', 'Q10A - xxxx'], data: participantData});
+                setPageNow('form');
+              }}
+            />
             <Box onClick={() => setPeerOpen(!peerOpen)} sx={{width: 'auto', height: '35px', bgcolor:"primary.main", color: 'secondary.main', fontSize:'1.2rem', display: 'flex', alignItems: 'center', paddingLeft: '20px', borderRadius: '15px 15px 0 0', borderBottom:'1px solid white'}}>
               Peers
             </Box>
@@ -127,11 +130,14 @@ const DPLView = () =>{
               <DataGrid
                 rows={p_rows}
                 columns={columns}
-
+                autoHeight={true}
+                autoPageSize={true}
+                pageSize={15}
+                disableColumnMenu={true}
                 headerHeight={45}
                 rowHeight={45}
-
-                onCellClick={(params) => {
+                hideFooterSelectedRowCount={true}
+                onRowClick={(params) => {
                   console.log(params.id)
                   setPageNavData({ title: ['Workshops', 'One-workshop', 'John Smith', 'Q10A - xxxx'], data: participantData});
                   setPageNow('form');
@@ -145,11 +151,14 @@ const DPLView = () =>{
               <DataGrid
                 rows={b_rows}
                 columns={columns}
-                
+                autoHeight={true}
+                autoPageSize={true}
+                pageSize={15}
+                disableColumnMenu={true}
                 headerHeight={45}
                 rowHeight={45}
-
-                onCellClick={(params) => {
+                hideFooterSelectedRowCount={true}
+                onRowClick={(params) => {
                   console.log(params.id)
                   setPageNavData({ title: ['Workshops', 'One-workshop', 'John Smith', 'Q10A - xxxx'], data: participantData});
                   setPageNow('form');

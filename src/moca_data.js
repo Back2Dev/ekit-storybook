@@ -149,8 +149,8 @@ const wsData = [
 		consultant: "Anette Medna",
 		company: "Acme Inc.",
 		role: "CEO",
-		"p-progress": 0.42,
-		"b-progress": 0.95,
+		"pProgress": 0.42,
+		"bProgress": 0.95,
 		"peers": 0.33,
 	},
 	{
@@ -160,8 +160,8 @@ const wsData = [
 		consultant: "Anette Medna",
 		company: "Acme Inc.",
 		role: "CEO",
-		"p-progress": 0.65,
-		"b-progress": 0.25,
+		"pProgress": 0.65,
+		"bProgress": 0.25,
 		"peers": 0.68,
 	},
 	{
@@ -171,8 +171,8 @@ const wsData = [
 		consultant: "Thomas Hanks",
 		company: "XYZ Inc.",
 		role: "COO",
-		"p-progress": 0.70,
-		"b-progress": 0.5,
+		"pProgress": 0.70,
+		"bProgress": 0.5,
 		"peers": 0.9,
 	},
 ]

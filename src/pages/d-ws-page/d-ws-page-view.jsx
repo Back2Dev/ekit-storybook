@@ -1,14 +1,15 @@
 import React from 'react'
-import { DataGrid } from '@mui/x-data-grid'
 import { Box, Grid, Button } from '@mui/material'
+import 'react-data-grid/lib/styles.css'
+import DataGrid from 'react-data-grid'
 
-import DWPInfo from './d-ws-page-info';
-import DesktopContext from '../d-provider/d-provider';
+import DWPInfo from './d-ws-page-info'
+import DesktopContext from '../d-provider/d-provider'
 
-import { wsData, participantData } from '../../moca_data';
+import { wsData, participantData } from '../../moca_data'
 
-const pButton = (value) => {
-  const n = parseFloat(value.formattedValue)
+const pButton = (prop) => {
+  const n = parseFloat(prop)
   if (n > 0.75 ) {
     return (
       <Button component="button" variant="contained" color='success' size='small'>
@@ -36,24 +37,30 @@ const DWPView = () => {
 
   // columns setting
   const columns = [
-    { field: 'id', headerName: 'ID'},
-    { field: 'name', headerName: 'Name'},
-    { field: 'company', headerName: 'Company'},
-    { field: 'role', headerName: 'Role'},
-    { field: 'p-progress', 
-      headerName: 'Participent', 
-      align: 'center',
-      renderCell: pButton
+    { key: 'id', name: 'ID', width: 60 },
+    { key: 'name', name: 'Name', width: 120 },
+    { key: 'company', name: 'Company', width: 160 },
+    { key: 'role', name: 'Role', width: 120 },
+    { key: 'pProgress', 
+      name: 'Participent', 
+      width: 100,
+      formatter: (props)=>{
+        return pButton(props.row.pProgress)
+      }
     },
-    { field: 'b-progress', 
-      headerName: 'Boss', 
-      align: 'center',
-      renderCell: pButton
+    { key: 'bProgress', 
+      name: 'Boss', 
+      width: 100,
+      formatter: (props) => {
+        return pButton(props.row.bProgress)
+      }
     },
-    { field: 'peers', 
-      headerName: 'Peers', 
-      align: 'center',
-      renderCell: pButton
+    { key: 'peers', 
+      name: 'Peers', 
+      width: 100,
+      formatter: (props) => {
+        return pButton(props.row.peers)
+      }
     }
   ]
 
@@ -61,22 +68,20 @@ const DWPView = () => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container >
           <Grid item xs={infoButton ? 8.5 : 12}>
-            <DataGrid
-              rows={wsData}
-              columns={columns}
-              autoHeight={true}
-              autoPageSize={true}
-              pageSize={15}
-              disableColumnMenu={true}
-              headerHeight={45}
-              rowHeight={45}
-              hideFooterSelectedRowCount={true}
-              onRowClick={(params) => {
-                console.log(params.id)
-                setPageNavData({ title: ['Workshops', 'One-workshop', 'John Smith'], data: participantData});
-                setPageNow('participant');
-              }}
-            />
+            <Box sx={{ height: '100px', width: '100%', display:'flex', justifyContent:'center'}}>
+              <DataGrid
+                rows={wsData}
+                columns={columns}
+
+                headerHeight={45}
+                rowHeight={45}
+
+                onCellClick={(params)=>{
+                  setPageNavData({ title: ['Workshops', 'One-workshop', 'John Smith'], data: participantData});
+                  setPageNow('participant');
+                }}
+              />
+            </Box>
           </Grid>
           <Grid item xs={3.5} hidden={!infoButton}>
             <DWPInfo />
