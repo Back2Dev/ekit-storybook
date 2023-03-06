@@ -174,23 +174,7 @@ const SortAccordion = ({ onSort }) => {
 
     setSortOrder({ field, direction });
 
-    console.log('Sorting by:', field, direction);
     onSort(field, direction);
-  };
-
-  const handleButtonClick = (field) => {
-    if (field === 'date') {
-      handleSort(field);
-    } else {
-      const direction =
-        sortOrder.field === field
-          ? sortOrder.direction === 'asc'
-            ? 'desc'
-            : 'asc'
-          : 'asc';
-      setSortOrder({ field, direction });
-      onSort(field, direction);
-    }
   };
 
   return (
@@ -215,14 +199,14 @@ const SortAccordion = ({ onSort }) => {
           alignItems: 'flex-end',
         }}
       >
-        <Button onClick={() => handleButtonClick('date')}>
+        <Button onClick={() => handleSort('date')}>
           Date
           <SortButton
             active={sortOrder.field === 'date'}
             direction={sortOrder.field === 'date' ? sortOrder.direction : null}
           />
         </Button>
-        <Button onClick={() => handleButtonClick('workshop')}>
+        <Button onClick={() => handleSort('workshop')}>
           Alphabetical
           <SortButton
             active={sortOrder.field === 'workshop'}
@@ -231,7 +215,7 @@ const SortAccordion = ({ onSort }) => {
             }
           />
         </Button>
-        <Button onClick={() => handleButtonClick('participants')}>
+        <Button onClick={() => handleSort('participants')}>
           Participants
           <SortButton
             active={sortOrder.field === 'participants'}
@@ -240,7 +224,7 @@ const SortAccordion = ({ onSort }) => {
             }
           />
         </Button>
-        <Button onClick={() => handleButtonClick('progress')}>
+        <Button onClick={() => handleSort('progress')}>
           Progress %
           <SortButton
             active={sortOrder.field === 'progress'}
@@ -256,7 +240,10 @@ const SortAccordion = ({ onSort }) => {
 
 const WorkshopList = () => {
   const [filteredWorkshops, setFilteredWorkshops] = useState(workshops);
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
+  const [sortConfig, setSortConfig] = useState({
+    key: 'date',
+    direction: 'ascending',
+  });
 
   const handleSort = (key) => {
     let direction = 'ascending';
