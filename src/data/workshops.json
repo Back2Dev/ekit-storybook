@@ -1,5 +1,13 @@
 [
   {
+    "workshop": "Archive Test",
+    "date": "1992-01-15T00:00:00-08:00",
+    "participants": 15,
+    "progress": 65,
+    "type": "Archived",
+    "id": "leewahzuo123412312"
+  },
+  {
     "workshop": "Newport Beach, CA",
     "date": "2023-02-22T00:00:00-08:00",
     "participants": 28,

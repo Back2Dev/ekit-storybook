@@ -30,7 +30,15 @@ const displayStrings = {
 const mapToDisplayString = (category) => displayStrings[category] || category;
 
 const FilterList = ({ workshops, setFilteredWorkshops }) => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([
+    'Workshop 2.5',
+    'In-House',
+    'Custom',
+  ]);
+
+  useEffect(() => {
+    filterWorkshops(selectedCategories);
+  }, []);
 
   const accordionRef = useRef();
 
