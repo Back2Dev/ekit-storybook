@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Box, LinearProgress, Button, styled, linearProgressClasses } from '@mui/material';
+import { Box, Button } from '@mui/material';
+
+import BorderLinearProgress from '../components/border-linear-progress';
 import DesktopContext from '../d-provider/d-provider';
-import DataGridComponent from '../data-grid-table';
+import DataGridComponent from '../components/data-grid-table/data-grid-table'
 
 import { listData } from '../../moca_data';
 import { wsData } from '../../moca_data';
@@ -46,16 +48,6 @@ const DWLView = () => {
         }
       },
     ]
-
-  const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-    [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
-    },
-    [`& .${linearProgressClasses.bar}`]: {
-      borderRadius: 4,
-      backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8',
-    },
-  }));
 
   return (
     <Box sx={{ height: '100px', width: '100%', display:'flex', justifyContent:'center'}}>

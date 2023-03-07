@@ -3,7 +3,7 @@ import { Box, Grid, Button } from '@mui/material'
 
 import DWPInfo from './d-ws-page-info'
 import DesktopContext from '../d-provider/d-provider'
-import DataGridComponent from '../data-grid-table'
+import DataGridComponent from '../components/data-grid-table/data-grid-table'
 
 import { wsData, participantData } from '../../moca_data'
 

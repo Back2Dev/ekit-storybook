@@ -1,5 +1,8 @@
 import React from 'react'
-import { Box, Button, Typography, LinearProgress, styled, linearProgressClasses, Grid, List, ListItem, ListItemButton, ListItemText, ListItemIcon } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
+
+import BorderLinearProgress from '../components/border-linear-progress';
+
 import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
 import ForwardToInboxOutlinedIcon from '@mui/icons-material/ForwardToInboxOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
@@ -8,16 +11,6 @@ import TextSnippetOutlinedIcon from '@mui/icons-material/TextSnippetOutlined';
 import { listData } from '../../moca_data'
 
 const data = listData[1]
-
-const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
-  },
-  [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 5,
-    backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8',
-  },
-}));
 
 const DWPInfo = () => {
   return (   

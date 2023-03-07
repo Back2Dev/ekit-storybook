@@ -6,7 +6,7 @@ import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import FileDownloadRoundedIcon from '@mui/icons-material/FileDownloadRounded';
 
 import DPLInfo from './d-p-list-info'
-import DataGridComponent from '../data-grid-table'
+import DataGridComponent from '../components/data-grid-table/data-grid-table'
 import DesktopContext from '../d-provider/d-provider';
 
 import { participantData } from '../../moca_data'
