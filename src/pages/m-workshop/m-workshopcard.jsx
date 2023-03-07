@@ -33,11 +33,17 @@ const getCategoryColor = (category) => {
 };
 
 function WorkshopCard({ workshop, category, date, participants, progress }) {
-  //display upcoming date in days, weeks, months
+  // display upcoming date in days, weeks, months
   function getFriendlyDate(date) {
-    const workshopDate = new Date(date);
+    let startDate = null;
+    if (date.includes('/')) {
+      startDate = new Date(date.split('/')[0]);
+    } else {
+      startDate = new Date(date);
+    }
+
     const currentDate = new Date();
-    const difference = workshopDate - currentDate;
+    const difference = startDate - currentDate;
     const oneDay = 24 * 60 * 60 * 1000;
     const oneWeek = 7 * oneDay;
     const oneMonth = 30 * oneDay;
@@ -58,12 +64,29 @@ function WorkshopCard({ workshop, category, date, participants, progress }) {
 
   // display year if date has already passed and workshop is archived
   function ArchiveYear(date) {
-    const workshopDate = new Date(date);
-    const currentDate = new Date();
-    const difference = workshopDate - currentDate;
+    let startDate = null;
+    if (date.includes('/')) {
+      startDate = new Date(date.split('/')[0]);
+    } else {
+      startDate = new Date(date);
+    }
 
-    if (difference < 0) return `, ${new Date(date).getFullYear()}`;
+    const currentDate = new Date();
+    const difference = startDate - currentDate;
+
+    if (difference < 0) return `, ${startDate.getFullYear()}`;
     return '';
+  }
+
+  let startDate = null;
+  let endDate = null;
+
+  if (date.includes('/')) {
+    const dateRange = date.split('/');
+    startDate = dateRange[0];
+    endDate = dateRange[1];
+  } else {
+    startDate = date;
   }
 
   return (
@@ -91,11 +114,30 @@ function WorkshopCard({ workshop, category, date, participants, progress }) {
         </Box>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography color="textSecondary">
-            {new Date(date).toLocaleDateString('en-US', {
-              month: 'short',
-              day: 'numeric',
-            })}
-
+            {date.includes('/') ? (
+              <>
+                {new Date(date.split('/')[0]).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                })}
+                {' - '}
+                {new Date(date.split('/')[1]).toLocaleDateString('en-US', {
+                  month:
+                    new Date(date.split('/')[0]).getMonth() !==
+                    new Date(date.split('/')[1]).getMonth()
+                      ? 'short'
+                      : undefined,
+                  day: 'numeric',
+                })}
+              </>
+            ) : (
+              <>
+                {new Date(date).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </>
+            )}
             {ArchiveYear(date)}
 
             {getFriendlyDate(date) && ` (${getFriendlyDate(date)})`}
