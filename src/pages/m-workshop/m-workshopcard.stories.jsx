@@ -1,6 +1,7 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React from 'react';
-import MMain from './m-main';
+import workshopdata from '../../data/workshops.json';
+import WorkshopCard from './m-workshopcard';
 
 const theme = createTheme({
   palette: {
@@ -24,14 +25,24 @@ const theme = createTheme({
 });
 
 export default {
-  title: 'MobileMainPage',
-  component: MMain,
+  title: 'MobileWorkshopCard',
+  component: WorkshopCard,
 };
 
 export const Default = () => {
+  const workshop = workshopdata;
   return (
     <ThemeProvider theme={theme}>
-      <MMain />
+      {workshop.map((workshop) => (
+        <WorkshopCard
+          key={workshop.id}
+          workshop={workshop.workshop}
+          date={workshop.date}
+          participants={workshop.participants}
+          progress={workshop.progress}
+          category={workshop.type}
+        />
+      ))}
     </ThemeProvider>
   );
 };

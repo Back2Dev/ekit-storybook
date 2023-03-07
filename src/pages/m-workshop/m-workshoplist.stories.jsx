@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React from 'react';
-import MMain from './m-main';
+import MWorkshopList from './m-workshoplist';
 
 const theme = createTheme({
   palette: {
@@ -24,14 +24,14 @@ const theme = createTheme({
 });
 
 export default {
-  title: 'MobileMainPage',
-  component: MMain,
+  title: 'MobileWorkshopListPage',
+  component: MWorkshopList,
 };
 
 export const Default = () => {
   return (
     <ThemeProvider theme={theme}>
-      <MMain />
+      <MWorkshopList />
     </ThemeProvider>
   );
 };
