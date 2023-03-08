@@ -3,7 +3,7 @@ import { Box, Grid, Button } from '@mui/material'
 
 import DWPInfo from './d-ws-page-info'
 import DesktopContext from '../d-provider/d-provider'
-import DataGridComponent from '../components/data-grid-table/data-grid-table'
+import DataGridTable from '../components/data-grid-table/data-grid-table'
 
 import { wsData, participantData } from '../../moca_data'
 
@@ -66,7 +66,7 @@ const DWPView = () => {
         <Grid container >
           <Grid item xs={infoButton ? 8.5 : 12}>
             <Box sx={{ height: '100px', width: '100%', display:'flex', justifyContent:'center'}}>
-              <DataGridComponent 
+              <DataGridTable 
                 rows={rows}
                 columns={columns}
                 onCellClick={(params)=>{

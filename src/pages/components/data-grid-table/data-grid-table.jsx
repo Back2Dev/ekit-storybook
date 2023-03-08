@@ -5,7 +5,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import DataGrid from 'react-data-grid'
 import 'react-data-grid/lib/styles.css'
 
-const DataGridComponent = (props) => {
+const DataGridTable = (props) => {
 	const [rows] = React.useState(props.rows);
   const [columns, setColumns] = React.useState(props.columns);
   const [sortColumns, setSortColumns] = React.useState([]);
@@ -105,4 +105,4 @@ const DataGridComponent = (props) => {
 	)
 }
 
-export default DataGridComponent
+export default DataGridTable

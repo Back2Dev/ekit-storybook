@@ -6,7 +6,7 @@ import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import FileDownloadRoundedIcon from '@mui/icons-material/FileDownloadRounded'
 
-import DataGridComponent from './index';
+import DataGridTable from './index';
 import ProgressBar from '../progress-bar';
 
 // moca data
@@ -76,7 +76,7 @@ const handleClick = (props) => {
 
 export default {
 	title: 'Compinents/DataGridTable',
-	component: DataGridComponent,
+	component: DataGridTable,
 	argTypes: {
     rows:{control: 'object', defaultValue: rows},
     columns:{control: 'object', defaultValue: columns},
@@ -91,7 +91,7 @@ const Template = (args) => {
 		<Box>
 			<h3> DataGridTable </h3>
 			<Box sx={{display:'flex'}}>
-				<DataGridComponent {...args}/>
+				<DataGridTable {...args}/>
 			</Box>
 		</Box>
 	)

@@ -3,7 +3,7 @@ import { Box, Button } from '@mui/material';
 
 import ProgressBar from '../components/progress-bar';
 import DesktopContext from '../d-provider/d-provider';
-import DataGridComponent from '../components/data-grid-table/data-grid-table'
+import DataGridTable from '../components/data-grid-table/data-grid-table'
 
 import { listData } from '../../moca_data';
 import { wsData } from '../../moca_data';
@@ -49,7 +49,7 @@ const DWLView = () => {
 
   return (
     <Box sx={{ height: '100px', width: '100%', display:'flex', justifyContent:'center'}}>
-      <DataGridComponent 
+      <DataGridTable 
         rows={rows}
         columns={columns}
         onCellClick={() => {

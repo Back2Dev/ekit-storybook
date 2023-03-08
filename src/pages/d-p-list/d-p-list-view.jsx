@@ -6,7 +6,7 @@ import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import FileDownloadRoundedIcon from '@mui/icons-material/FileDownloadRounded';
 
 import DPLInfo from './d-p-list-info'
-import DataGridComponent from '../components/data-grid-table/data-grid-table'
+import DataGridTable from '../components/data-grid-table/data-grid-table'
 import DesktopContext from '../d-provider/d-provider';
 
 import { participantData } from '../../moca_data'
@@ -99,7 +99,7 @@ const DPLView = () =>{
             {pData.name}
           </Box>
           <Box>
-            <DataGridComponent
+            <DataGridTable
               rows={rows}
               columns={columns}
               onCellClick={(params) => {
@@ -113,7 +113,7 @@ const DPLView = () =>{
             Peers
           </Box>
           <Box hidden={!peerOpen}>
-            <DataGridComponent
+            <DataGridTable
               rows={p_rows}
               columns={columns}
               onCellClick={(params) => {
@@ -127,7 +127,7 @@ const DPLView = () =>{
             Bosses
           </Box>
           <Box hidden={!bossOpen}>
-            <DataGridComponent
+            <DataGridTable
               rows={b_rows}
               columns={columns}
               onCellClick={(params) => {
