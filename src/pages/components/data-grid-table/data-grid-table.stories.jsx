@@ -15,9 +15,9 @@ const columns = [
 	{ key: 'name', name: 'Name', width: 150, editable: false },
 	{ key: 'Date', name: 'Date', width: 200, },
 	{ key: 'Participants', name: 'Participants', width: 160, },
-	{ key: 'Progress', name: 'Progress', width: 160,
+	{ key: 'progress', name: 'Progress', width: 160,
 		formatter: (props) => {
-			const progress = props.row.Progress
+			const progress = props.row.progress
 			return <ProgressBar 
 						variant="determinate" 
 						value={parseFloat(progress * 100)} 
@@ -62,12 +62,12 @@ const columns = [
 ]
 
 const rows = [
-  { id: 0, name: 'Rose Dalli', Date: '2023-03-01', Participants: '21', Progress: 0.5, Type: '2.5', completed: true, download: 'https://www.google.com/' },
-  { id: 1, name: 'Randy Jackson', Date: '2022-04-02', Participants: '11', Progress: 0.6, Type: 'In-house', completed: false, download: 'https://www.google.com/' },
-  { id: 2, name: 'Henry Zoe', Date: '2022-04-01', Participants: '30', Progress: 0.1, Type: 'Archived', completed: true, download: 'https://www.google.com/' },
-  { id: 3, name: 'Randy X', Date: '2022-05-03', Participants: '15', Progress: 0, Type: 'Custom', completed: true, download: 'https://www.google.com/' },
-  { id: 4, name: 'Jack Jackson', Date: '2022-06-01', Participants: '28', Progress: 0.8, Type: '2.5', completed: true, download: 'https://www.google.com/' },
-  { id: 5, name: 'Randy Roman', Date: '2023-07-04', Participants: '41', Progress: 1, Type: 'In-house', completed: false, download: 'https://www.google.com/' },
+  { id: 0, name: 'Rose Dalli', Date: '2023-03-01', Participants: '21', progress: 0.5, Type: '2.5', completed: true, download: 'https://www.google.com/' },
+  { id: 1, name: 'Randy Jackson', Date: '2022-04-02', Participants: '11', progress: 0.6, Type: 'In-house', completed: false, download: 'https://www.google.com/' },
+  { id: 2, name: 'Henry Zoe', Date: '2022-04-01', Participants: '30', progress: 0.1, Type: 'Archived', completed: true, download: 'https://www.google.com/' },
+  { id: 3, name: 'Randy X', Date: '2022-05-03', Participants: '15', progress: 0, Type: 'Custom', completed: true, download: 'https://www.google.com/' },
+  { id: 4, name: 'Jack Jackson', Date: '2022-06-01', Participants: '28', progress: 0.8, Type: '2.5', completed: true, download: 'https://www.google.com/' },
+  { id: 5, name: 'Randy Roman', Date: '2023-07-04', Participants: '41', progress: 1, Type: 'In-house', completed: false, download: 'https://www.google.com/' },
 ]
 
 const handleClick = (props) => {

@@ -5,7 +5,7 @@ import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import FileDownloadRoundedIcon from '@mui/icons-material/FileDownloadRounded';
 
-import DPLInfo from './d-p-list-info'
+import InfoCard from '../components/info-card'
 import DataGridTable from '../components/data-grid-table/data-grid-table'
 import DesktopContext from '../d-provider/d-provider';
 
@@ -140,7 +140,7 @@ const DPLView = () =>{
         </Grid>
         <Grid item xs={3.5} hidden={!infoButton}>
           <Box sx={{width:"100%"}}>
-            <DPLInfo data={pData} />
+            <InfoCard cardType='participant' data= {pData}/>
           </Box>
         </Grid>
       </Grid>

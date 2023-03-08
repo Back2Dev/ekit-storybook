@@ -17,12 +17,12 @@ const DWLView = () => {
       { key: 'Workshop', name: 'Workshop', width: 200 },
       { key: 'Date', name: 'Date', width: 200, },
       { key: 'Participants', name: 'Participants', width: 160, },
-      { key: 'Progress', name: 'Progress', width: 160,
+      { key: 'progress', name: 'Progress', width: 160,
         formatter: (props) => {
-          const progress = props.row.Progress
+          const progress = props.row.progress
           return <ProgressBar 
                     variant="determinate" 
-                    value={parseFloat(progress * 100)} 
+                    value={progress} 
                     width="60%"
                     height="15px"
                     borderRadius="6px"

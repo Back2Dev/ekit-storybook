@@ -1,11 +1,11 @@
 import React from 'react'
 import { Box, Grid, Button } from '@mui/material'
 
-import DWPInfo from './d-ws-page-info'
+import InfoCard from '../components/info-card'
 import DesktopContext from '../d-provider/d-provider'
-import DataGridTable from '../components/data-grid-table/data-grid-table'
+import DataGrid from '../components/data-grid-table/data-grid-table'
 
-import { wsData, participantData } from '../../moca_data'
+import { wsData, participantData, listData } from '../../moca_data'
 
 const DWPView = () => {
 
@@ -39,7 +39,7 @@ const DWPView = () => {
     }
   ]
   const pButton = (prop) => {
-    const n = parseFloat(prop)
+    const n = parseFloat(prop / 100)
     if (n > 0.75 ) {
       return (
         <Button component="button" variant="contained" color='success' size='small'>
@@ -66,7 +66,7 @@ const DWPView = () => {
         <Grid container >
           <Grid item xs={infoButton ? 8.5 : 12}>
             <Box sx={{ height: '100px', width: '100%', display:'flex', justifyContent:'center'}}>
-              <DataGridTable 
+              <DataGrid 
                 rows={rows}
                 columns={columns}
                 onCellClick={(params)=>{
@@ -77,7 +77,7 @@ const DWPView = () => {
             </Box>
           </Grid>
           <Grid item xs={3.5} hidden={!infoButton}>
-            <DWPInfo />
+            <InfoCard cardType='workshop' data= {listData[0]}/>
           </Grid>
         </Grid>
       </Box>

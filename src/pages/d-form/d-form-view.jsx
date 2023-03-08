@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Grid, Typography, Stepper, Step, StepButton } from '@mui/material'
 
-import DFInfo from './d-form-info'
+import InfoCard from '../components/info-card'
 import DesktopContext from '../d-provider/d-provider'
 
 import { participantData } from '../../moca_data'
@@ -82,7 +82,7 @@ const DFView = () =>{
         <Grid item xs={infoButton ? 1 : 2} sx={{bgcolor:'lightgrey'}} />
         <Grid item xs={3.5} hidden={!infoButton}>
           <Box sx={{width:"100%"}}>
-            <DFInfo data={pData} />
+            <InfoCard cardType='participant' data= {pData}/>
           </Box>
         </Grid>
       </Grid>
