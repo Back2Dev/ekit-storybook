@@ -1,7 +1,5 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
-console.log(INITIAL_VIEWPORTS);
-
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
