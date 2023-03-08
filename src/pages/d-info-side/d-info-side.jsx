@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button, Typography } from '@mui/material'
 
-import BorderLinearProgress from '../components/border-linear-progress';
+import ProgressBar from '../components/progress-bar';
 
 import { listData } from '../../moca_data'
 
@@ -18,7 +18,12 @@ const DInfoSide = () => {
         </Box>
         <Box sx={{backgroundColor:"white", width:"85%", borderRadius: "15px", border: "2px", borderColor: "primary", borderStyle: "solid", marginTop: "20px", paddingTop: "15px", paddingBottom: "15px", marginBottom: "20px", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
           <Typography variant="h6" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>Progress   {data.Progress *100}%</Typography>
-          <BorderLinearProgress variant="determinate" value={parseFloat(data.Progress)*100} sx={{width:"80%", height:"25px", borderRadius: "10px", marginTop:"5px", marginBottom:"5px"}}/>
+          <ProgressBar 
+            value={parseFloat(data.Progress)*100} 
+            width="80%" 
+            height="25px"
+            borderRadius="10px"
+          />
           <Box  sx={{ display: 'flex', justifyContent: 'space-around', width:"100%", marginTop: "20px" }}>
             <Button variant="outlined" color="error" >
               Reject

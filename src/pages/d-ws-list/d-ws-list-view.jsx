@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, Button } from '@mui/material';
 
-import BorderLinearProgress from '../components/border-linear-progress';
+import ProgressBar from '../components/progress-bar';
 import DesktopContext from '../d-provider/d-provider';
 import DataGridComponent from '../components/data-grid-table/data-grid-table'
 
@@ -20,16 +20,14 @@ const DWLView = () => {
       { key: 'Progress', name: 'Progress', width: 160,
         formatter: (props) => {
           const progress = props.row.Progress
-          return (
-            <Box sx={{display:'flex', justifyContent:'space-around', alignItems:'center', width: '100%'}}>
-              <BorderLinearProgress 
-                variant="determinate" 
-                value={parseFloat(progress * 100)} 
-                sx={{width:"60%", height:"15px", borderRadius: "6px"}}
-              />
-              {progress * 100}%
-            </Box>
-          )
+          return <ProgressBar 
+                    variant="determinate" 
+                    value={parseFloat(progress * 100)} 
+                    width="60%"
+                    height="15px"
+                    borderRadius="6px"
+                    showText={true}
+                  />
         }
       },
       { key: 'Type', name: 'Type', width: 100,

@@ -1,21 +1,21 @@
 import React from 'react'
-import 'react-data-grid/lib/styles.css'
-import DataGrid from 'react-data-grid'
 import DraggableHeaderRenderer from './header-renderers';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import DataGrid from 'react-data-grid'
+import 'react-data-grid/lib/styles.css'
 
-const DataGridComponent = (params) => {
-	const [rows] = React.useState(params.rows);
-  const [columns, setColumns] = React.useState(params.columns);
+const DataGridComponent = (props) => {
+	const [rows] = React.useState(props.rows);
+  const [columns, setColumns] = React.useState(props.columns);
   const [sortColumns, setSortColumns] = React.useState([]);
 	const onSortColumnsChange = React.useCallback((sortColumns) => {
     setSortColumns(sortColumns.slice(-1));
   }, []);
 
   const draggableColumns = React.useMemo(() => {
-    const headerRenderer = (props) => {
-      return <DraggableHeaderRenderer {...props} onColumnsReorder={handleColumnsReorder} />;
+    const headerRenderer = (p) => {
+      return <DraggableHeaderRenderer {...p} onColumnsReorder={handleColumnsReorder} />;
     }
 
     const handleColumnsReorder = (sourceKey, targetKey) => {
@@ -97,11 +97,9 @@ const DataGridComponent = (params) => {
 				onSortColumnsChange={onSortColumnsChange}
 				direction={direction}
 				defaultColumnOptions={{ resizable: true, sortable: true, filterable: true, editable: false }}
-
-				rowHeight={params.rowHeight || 45}
-				headerRowHeight={params.headerRowHeight || 45}
-
-				onCellClick={params.onCellClick}
+				rowHeight={props.rowHeight || 45}
+				headerRowHeight={props.headerRowHeight || 45}
+				onCellClick={props.onCellClick}
 			/>
 		</DndProvider>
 	)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button, Typography, List, ListItem, ListItemButton, ListItemText, ListItemIcon } from '@mui/material'
 
-import BorderLinearProgress from '../components/border-linear-progress';
+import ProgressBar from '../components/progress-bar';
 
 import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
 import ForwardToInboxOutlinedIcon from '@mui/icons-material/ForwardToInboxOutlined';
@@ -37,7 +37,12 @@ const DPLInfo = () => {
         </Box>
         <Box sx={{backgroundColor:"white", width:"85%", borderRadius: "15px", border: "2px", borderColor: "primary", borderStyle: "solid", marginTop: "10px", paddingTop: "15px", paddingBottom: "15px", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
           <Typography variant="h6" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>Progress   {data.progress}</Typography>
-          <BorderLinearProgress variant="determinate" value={parseFloat(data.progress)} sx={{width:"80%", height:"25px", borderRadius: "10px", marginTop:"5px", marginBottom:"5px"}}/>
+          <ProgressBar 
+            value={parseFloat(data.progress)} 
+            width="80%"
+            height="25px"
+            borderRadius="10px"
+          />
           <Box  sx={{ display: 'flex', justifyContent: 'space-around', width:"100%", marginTop: "20px" }}>
             <Button variant="outlined" color="error" >
               Reject
