@@ -2,7 +2,7 @@ import React from 'react'
 import DraggableHeaderRenderer from './header-renderers';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import DataGrid from 'react-data-grid'
+import ReactDataGrid from 'react-data-grid'
 import 'react-data-grid/lib/styles.css'
 import './data-grid-table.css'
 
@@ -89,18 +89,70 @@ const DataGridTable = (props) => {
 
 	const direction = 'ASC';
 
+  const handleRowClick = idx => {
+    console.log(`Clicked row ${idx}`);
+  };
+
+  const handleRowMouseEnter = idx => {
+    console.log(`Hovered row ${idx}`);
+  };
+
+  const handleRowMouseLeave = idx => {
+    console.log(`Left row ${idx}`);
+  };
+
+  const RowRenderer = ({ row, idx, onRowClick, onRowMouseEnter, onRowMouseLeave }) => {
+    const [isHovered, setIsHovered] = useState(false);
+  
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+      onRowMouseEnter(idx);
+    };
+  
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+      onRowMouseLeave(idx);
+    };
+  
+    return (
+      <div
+        className={`rdg-row${isHovered ? ' rdg-row-hover' : ''}`}
+        onClick={() => onRowClick(idx)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {row.cells.map(cell => (
+          <div key={cell.id} className="rdg-cell">
+            {cell.formattedValue}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
 	return (
 		<DndProvider backend={HTML5Backend}>
-			<DataGrid
+			<ReactDataGrid
 				columns={draggableColumns}
-				rows={sortedRows}
+				// rows={sortedRows}
+        rowGetter={i => sortedRows[i]}
+        rowsCount={sortedRows.length}
 				sortColumns={sortColumns}
 				onSortColumnsChange={onSortColumnsChange}
+        
+        sortDirection={sortDirection}
+        onGridSort={handleGridSort}
 				direction={direction}
+        rowRenderer={RowRenderer}
+        enableCellSelect={false}
+        onCellSelected={(rowIdx, colIdx) => {}}
+        onRowClick={handleRowClick}
+        onRowMouseEnter={handleRowMouseEnter}
+        onRowMouseLeave={handleRowMouseLeave}
+
 				defaultColumnOptions={{ resizable: true, sortable: true, filterable: true, editable: false }}
 				rowHeight={props.rowHeight || 45}
 				headerRowHeight={props.headerRowHeight || 45}
-				onCellClick={props.onCellClick}
         className="my-grid"
 			/>
 		</DndProvider>

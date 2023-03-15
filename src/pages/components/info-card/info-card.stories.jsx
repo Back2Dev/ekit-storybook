@@ -2,8 +2,6 @@ import React from 'react';
 import { Box } from '@mui/material'
 
 import InfoCard from './index'
-import { WorkshopPage } from '../../d-main.stories';
-
 
 const mocaData = { id: 1, Workshop: 'Newport Beach, CA', Date: '11-13 Jan 2023', Participants: '21', progress: 80, Type: 'Archived', name: 'test name', company: 'Test Company', Role: 'Test Role', consultant: 'Test Consultant', last_updated: '2021-10-10', phone:'123456789', email:'test@test.com',}
 

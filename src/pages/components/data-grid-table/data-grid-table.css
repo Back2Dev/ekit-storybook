@@ -1,0 +1,14 @@
+.my-grid{
+    background-color: #f8f8f8; /* Set the background color for the table */
+    font-size: 14px; /* Set the font size for the table */
+    font-family: Arial, sans-serif; 
+    /* margin-top: 20px; */
+}
+
+.my-grid .rdg-cell {
+    background-color: #f8f8f8; 
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

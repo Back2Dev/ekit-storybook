@@ -9,7 +9,7 @@ import { wsData, participantData, listData } from '../../moca_data'
 
 const DWPView = () => {
 
-  const { infoButton, setPageNavData, setPageNow } = React.useContext(DesktopContext);
+  const { infoButton, pageNavData, setPageNavData, setPageNow } = React.useContext(DesktopContext);
   const rows = wsData;
   const columns = [
     { key: 'id', name: 'ID', width: 60 },

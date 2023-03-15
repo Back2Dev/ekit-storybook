@@ -1,5 +1,6 @@
 import React from 'react'
-import { Box, Button, Typography, List, ListItem, ListItemButton, ListItemText, ListItemIcon } from '@mui/material'
+import { Box, Button, Typography, List, ListItem, ListItemButton, ListItemText, ListItemIcon, Avatar } from '@mui/material'
+import { makeStyles } from '@mui/styles';
 
 import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
 import ForwardToInboxOutlinedIcon from '@mui/icons-material/ForwardToInboxOutlined';
@@ -10,13 +11,36 @@ import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 
 import ProgressBar from '../progress-bar';
 
+
 const WorkshopCard = (data) => {
   return (
-    <Box sx={{backgroundColor:"white", width:"85%", borderRadius: "15px", border: "2px", borderColor: "primary", borderStyle: "solid", marginTop: "20px", paddingTop: "25px", paddingBottom: "25px"}}>
-      <Typography variant="h5" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>{data.Workshop}</Typography>
-      <Typography variant="h6" sx={{color: 'blue', fontWeight: 'bold', textAlign: 'center'}}>{data.Date}</Typography>
-      <Typography sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>Participants: {data.Participants}</Typography>
-      <Typography variant="h6" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>{data.Type}</Typography>
+    <Box sx={{
+      backgroundColor:"white", 
+      width:"85%", 
+      borderRadius: "15px", 
+      border: "2px", 
+      borderColor: "primary", 
+      borderStyle: "solid", 
+      marginTop: "20px", 
+      paddingTop: "25px", 
+      paddingBottom: "25px",
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',}}
+    >
+      <Typography variant="h5" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center', marginBottom: '20px'}}>{data.Workshop}</Typography>
+      <Box sx={{display: 'flex', justifyContent: 'space-around', width: '100%'}}>
+        <Avatar 
+          src={data.avatarUrl || 'https://robohash.org/690a67f7d52579e35f3e5d3fcf437702?set=set4&bgset=bg2&size=200x200'} 
+          sx={{ width:'100px', height:'100px'}} 
+        />
+        <Box sx={{display: 'flex',flexDirection: 'column'}}>
+          <Typography variant="h6" sx={{color: 'blue', fontWeight: 'bold', textAlign: 'center'}}>{data.Date}</Typography>
+          <Typography sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>Participants: {data.Participants}</Typography>
+          <Typography variant="h6" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>{data.Type}</Typography>
+        </Box>
+      </Box>
     </Box>
   )
 }
@@ -47,9 +71,18 @@ const ProgressCard = (data) => {
 const ParticipantCard = (data) => {
   return (
     <Box sx={{backgroundColor:"white", width:"85%", borderRadius: "15px", border: "2px", borderColor: "primary", borderStyle: "solid", marginTop: "20px", paddingTop: "15px", paddingBottom: "15px"}}>
-      <Typography variant="h5" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>{data.name}</Typography>
-      <Typography variant="h6" sx={{color: 'blue', fontWeight: 'bold', textAlign: 'center'}}>{data.company}</Typography>
-      <Typography variant="h6" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>{data.role}</Typography>
+      <Box sx={{display: 'flex', justifyContent: 'space-around', width: '100%', marginBottom: '10px'}}>
+        <Avatar 
+          src={data.avatarUrl || 'https://robohash.org/690a67f7d52579e35f3e5d3fcf437702?set=set4&bgset=bg2&size=200x200'} 
+          sx={{ width:'100px', height:'100px'}} 
+        />
+
+        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+          <Typography variant="h5" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>{data.name}</Typography>
+          <Typography variant="h6" sx={{color: 'blue', fontWeight: 'bold', textAlign: 'center'}}>{data.company}</Typography>
+          <Typography variant="h6" sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>{data.role}</Typography>
+        </Box>
+      </Box>
       <Typography sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>Consultant: {data.consultant}</Typography>
       <Typography sx={{color: 'primary.main', fontWeight: 'bold', textAlign: 'center'}}>Last Updated: {data.last_updated.slice(0,10)}</Typography>
     </Box>

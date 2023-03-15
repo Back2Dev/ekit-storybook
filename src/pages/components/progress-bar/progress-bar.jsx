@@ -21,7 +21,7 @@ const ProgressBar = (props) => {
 
 	return (
 		<Box sx={{height:'100%', width:'100%', display:'flex', justifyContent:'space-around', alignItems:'center'}} >
-			<BorderLinearProgress variant={variant} value={value} sx={{ height:{height}, width:{width}, borderRadius:{borderRadius} }} />
+			<BorderLinearProgress variant={variant} value={Number(value)} sx={{ height:{height}, width:{width}, borderRadius:{borderRadius} }} />
 				{showText? `${value}%` : ""}
 		</Box>
 	)
