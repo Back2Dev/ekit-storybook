@@ -2,7 +2,7 @@ import React from 'react'
 import { styled, alpha, AppBar, Box, Toolbar, IconButton, Typography, InputBase, Badge, Menu, MenuItem } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import mapLogo from '../../../public/MAP-Logo.webp'
+import mapLogo from './MAP-Logo.webp'
 
 
 const Search = styled('div')(({ theme }) => ({

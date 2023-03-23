@@ -46,42 +46,48 @@ const DataGridTable = (props) => {
     let sortedRows = [...rows];
 
     switch (columnKey) {
-      case 'id':
-        sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
-        break;
-      case 'name':
-        sortedRows = sortedRows.sort((a, b) => a[columnKey].localeCompare(b[columnKey]));
-        break;
-      case 'company':
-        sortedRows = sortedRows.sort((a, b) => a[columnKey].localeCompare(b[columnKey]));
-        break;
-      case 'role':
-        sortedRows = sortedRows.sort((a, b) => a[columnKey].localeCompare(b[columnKey]));
-        break;
-      case 'pProgress':
-        sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
-        break;
-      case 'bProgress':
-        sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
-        break;
-      case 'peers':
-        sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
-        break;
-			case 'Workshop':
-				sortedRows = sortedRows.sort((a, b) => a[columnKey].localeCompare(b[columnKey]));
-				break;
-			case 'Date':
-				sortedRows = sortedRows.sort((a, b) => a[columnKey]-b[columnKey]);
-				break;
-			case 'Participants':
-				sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
-				break;
-			case 'Progress':
-				sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
-				break;
-			case 'Type':
-				sortedRows = sortedRows.sort((a, b) => a[columnKey].localeCompare(b[columnKey]));
-				break;
+      // case 'ID':
+      //   sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
+      //   break;      
+      // case 'Workshop_ID':
+      //   sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
+      //   break;
+      // case 'name':
+      //   sortedRows = sortedRows.sort((a, b) => a[columnKey].localeCompare(b[columnKey]));
+      //   break;
+      // case 'Address':
+      //   sortedRows = sortedRows.sort((a, b) => a[columnKey].localeCompare(b[columnKey]));
+      //   break;
+      // case 'company':
+      //   sortedRows = sortedRows.sort((a, b) => a[columnKey].localeCompare(b[columnKey]));
+      //   break;
+      // case 'role':
+      //   sortedRows = sortedRows.sort((a, b) => a[columnKey].localeCompare(b[columnKey]));
+      //   break;
+      // case 'pProgress':
+      //   sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
+      //   break;
+      // case 'bProgress':
+      //   sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
+      //   break;
+      // case 'peers':
+      //   sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
+      //   break;
+			// case 'Workshop':
+			// 	sortedRows = sortedRows.sort((a, b) => a[columnKey].localeCompare(b[columnKey]));
+			// 	break;
+			// case 'Start Date':
+			// 	sortedRows = sortedRows.sort((a, b) => a[columnKey]-b[columnKey]);
+			// 	break;
+			// case 'Participants':
+			// 	sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
+			// 	break;
+			// case 'Progress':
+			// 	sortedRows = sortedRows.sort((a, b) => a[columnKey] - b[columnKey]);
+			// 	break;
+			// case 'Type':
+			// 	sortedRows = sortedRows.sort((a, b) => a[columnKey].localeCompare(b[columnKey]));
+			// 	break;
       default:
     }
     return direction === 'DESC' ? sortedRows.reverse() : sortedRows;
